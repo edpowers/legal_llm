@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Constitutional Rights Advisor - Lawyers</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1c1c1c;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      max-width: 375px;
+      width: 100%;
+      height: 667px;
+      background-color: #2b2b2b;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      box-sizing: border-box;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      overflow-y: auto;
+    }
+    h1 {
+      font-size: 24px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+    .lawyer-item {
+      background-color: #444444;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 15px;
+      text-align: left;
+      cursor: pointer;
+    }
+    .lawyer-info h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #ffffff;
+    }
+    .lawyer-info p {
+      margin: 5px 0;
+      color: #cccccc;
+    }
+    .lawyer-details {
+      display: none;
+      margin-top: 10px;
+      color: #ffffff;
+    }
+    .lawyer-details p {
+      margin: 5px 0;
+    }
+    .connect-button {
+      background-color: #008CBA;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+      overflow: auto;
+    }
+    .popup-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #2b2b2b;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      max-width: 375px;
+      max-height: 667px;
+      width: 90%;
+      height: auto;
+      box-sizing: border-box;
+      overflow: auto;
+    }
+    .popup p {
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+    .popup input[type="checkbox"] {
+      width: auto;
+      margin-right: 5px;
+    }
+    .popup input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        background-color: #444444;
+        color: #ffffff;
+        border: 1px solid #444444;
+        border-radius: 4px;
+    }
+    .popup label {
+      color: #ffffff;
+      font-size: 14px;
+    }
+    .popup textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      background-color: #444444;
+      color: #ffffff;
+      border: 1px solid #444444;
+      border-radius: 4px;
+    }
+    .popup button {
+      background-color: #008CBA;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      color: #999;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lawyers to Help Resolve Rights Infringements</h1>
+        <div class="lawyer-item">
+          <div class="lawyer-info">
+            <h3>John Doe</h3>
+            <p>New York City, NY</p>
+          </div>
+          <div class="lawyer-details">
+            <p>Credentials: Harvard Law School graduate</p>
+            <p>Practicing law for 15 years</p>
+            <p>Hourly rate: $400</p>
+            <button class="connect-button" data-lawyer="John Doe">Connect with John</button>
+          </div>
+        </div>
+        <div class="lawyer-item">
+          <div class="lawyer-info">
+            <h3>Jane Smith</h3>
+            <p>Los Angeles, CA</p>
+          </div>
+          <div class="lawyer-details">
+            <p>Credentials: Stanford Law School graduate</p>
+            <p>Practicing law for 12 years</p>
+            <p>Hourly rate: $350</p>
+            <button class="connect-button" data-lawyer="Jane Smith">Connect with Jane</button>
+          </div>
+        </div>
+        <div class="lawyer-item">
+          <div class="lawyer-info">
+            <h3>Michael Johnson</h3>
+            <p>Chicago, IL</p>
+          </div>
+          <div class="lawyer-details">
+            <p>Credentials: University of Chicago Law School graduate</p>
+            <p>Practicing law for 10 years</p>
+            <p>Hourly rate: $300</p>
+            <button class="connect-button" data-lawyer="Michael Johnson">Connect with Michael</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="popup">
+        <div class="popup-content">
+          <span class="close-button">&times;</span>
+          <p>Please provide your email and question to connect with <span class="lawyer-name"></span>.</p>
+          <input type="email" placeholder="Enter your email"><br>
+          <textarea placeholder="Type your question"></textarea>
+          <label><input type="checkbox" id="copy-chat"> Copy your chat content</label>
+          <hr>
+          <button class="submit-button">Submit</button>
+        </div>
+      </div>
+
+  <script>
+    const lawyerItems = document.querySelectorAll('.lawyer-item');
+    const popup = document.querySelector('.popup');
+    const closeButton = document.querySelector('.close-button');
+    const lawyerName = document.querySelector('.lawyer-name');
+    const emailInput = document.querySelector('.popup input[type="email"]');
+    const questionTextarea = document.querySelector('.popup textarea');
+    const submitButton = document.querySelector('.submit-button');
+
+    lawyerItems.forEach(item => {
+      const lawyerInfo = item.querySelector('.lawyer-info');
+      const lawyerDetails = item.querySelector('.lawyer-details');
+      const connectButton = item.querySelector('.connect-button');
+
+      lawyerInfo.addEventListener('click', () => {
+        lawyerDetails.style.display = lawyerDetails.style.display === 'none' ? 'block' : 'none';
+      });
+
+      connectButton.addEventListener('click', () => {
+        const lawyer = connectButton.getAttribute('data-lawyer');
+        lawyerName.textContent = lawyer;
+        popup.style.display = 'block';
+      });
+    });
+
+    closeButton.addEventListener('click', () => {
+      popup.style.display = 'none';
+    });
+
+    submitButton.addEventListener('click', () => {
+      const email = emailInput.value.trim();
+      const question = questionTextarea.value.trim();
+      const copyChat = document.getElementById('copy-chat').checked;
+
+      if (email !== '' && question !== '') {
+        // Here, you would typically send the email and question to the selected lawyer
+        // For this example, we'll just log the details and close the popup
+        console.log('Email:', email);
+        console.log('Question:', question);
+        console.log('Copy Chat:', copyChat);
+        popup.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Constitutional Rights Advisor - FAQ</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1c1c1c;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      max-width: 375px;
+      width: 100%;
+      height: 667px;
+      background-color: #2b2b2b;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      box-sizing: border-box;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      overflow-y: auto;
+    }
+    h1 {
+      font-size: 24px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+    .faq-item {
+      background-color: #444444;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 15px;
+      text-align: left;
+      cursor: pointer;
+    }
+    .question h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #ffffff;
+    }
+    .tally {
+      font-size: 14px;
+      color: #cccccc;
+      margin-top: 5px;
+    }
+    .answer {
+      display: none;
+      margin-top: 10px;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Frequently Asked Questions</h1>
+    <div class="faq-item">
+      <div class="question">
+        <h3>What rights are protected by the Constitution?</h3>
+        <div class="tally">Asked 532 times</div>
+      </div>
+      <div class="answer">
+        <p>The Constitution protects various rights, including freedom of speech, religion, press, assembly, and petition. It also guarantees due process, equal protection under the law, and the right to bear arms, among others.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="question">
+        <h3>How can I determine if my rights have been violated?</h3>
+        <div class="tally">Asked 417 times</div>
+      </div>
+      <div class="answer">
+        <p>If you believe your constitutional rights have been violated, you should consult with a qualified attorney who specializes in constitutional law. They can assess your situation and advise you on the best course of action.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="question">
+        <h3>What should I do if my rights have been violated?</h3>
+        <div class="tally">Asked 289 times</div>
+      </div>
+      <div class="answer">
+        <p>If your rights have been violated, you may have legal recourse. Depending on the nature of the violation, you may be able to file a complaint with the appropriate government agency, seek a court injunction, or pursue a lawsuit for damages. An experienced attorney can guide you through the process.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      const question = item.querySelector('.question');
+      const answer = item.querySelector('.answer');
+
+      question.addEventListener('click', () => {
+        answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
